@@ -19,6 +19,11 @@
   * {
     box-sizing: border-box;
   }
+  
+  /* Scroll padding to account for fixed navbar */
+  section[id] {
+    scroll-margin-top: 80px;
+  }
 }
 
 @layer components {

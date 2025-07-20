@@ -25,6 +25,26 @@ export default function Navigation() {
     { name: 'Kontakt', href: '#contact' },
   ]
 
+  // Smooth scroll function that accounts for navbar height
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault()
+    const targetId = href.replace('#', '')
+    const targetElement = document.getElementById(targetId)
+    
+    if (targetElement) {
+      const navHeight = 80 // Approximate navbar height
+      const targetPosition = targetElement.offsetTop - navHeight
+      
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      })
+    }
+    
+    // Close mobile menu if open
+    setIsOpen(false)
+  }
+
   return (
     <>
       <motion.nav
@@ -55,10 +75,11 @@ export default function Navigation() {
                   <motion.a
                     key={item.name}
                     href={item.href}
+                    onClick={(e) => handleNavClick(e, item.href)}
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 * index }}
-                    className="text-white hover:text-primary transition-colors duration-300 font-medium"
+                    className="text-white hover:text-primary transition-colors duration-300 font-medium cursor-pointer"
                   >
                     {item.name}
                   </motion.a>
@@ -68,10 +89,7 @@ export default function Navigation() {
               {/* CTA Button & Mobile Menu */}
               <div className="flex items-center space-x-4">
                 <motion.button
-                  onClick={() => {
-                    const contactSection = document.getElementById('contact')
-                    contactSection?.scrollIntoView({ behavior: 'smooth' })
-                  }}
+                  onClick={() => handleNavClick({ preventDefault: () => {} } as React.MouseEvent<HTMLAnchorElement>, '#contact')}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.6 }}
@@ -115,8 +133,8 @@ export default function Navigation() {
                   <a
                     key={item.name}
                     href={item.href}
-                    onClick={() => setIsOpen(false)}
-                    className="text-xl text-white hover:text-primary transition-colors duration-300"
+                    onClick={(e) => handleNavClick(e, item.href)}
+                    className="text-xl text-white hover:text-primary transition-colors duration-300 cursor-pointer"
                   >
                     {item.name}
                   </a>
@@ -124,11 +142,7 @@ export default function Navigation() {
                 
                 <div className="pt-8 border-t border-primary/20">
                   <button 
-                    onClick={() => {
-                      const contactSection = document.getElementById('contact')
-                      contactSection?.scrollIntoView({ behavior: 'smooth' })
-                      setIsOpen(false)
-                    }}
+                    onClick={() => handleNavClick({ preventDefault: () => {} } as React.MouseEvent<HTMLAnchorElement>, '#contact')}
                     className="w-full bg-primary hover:bg-primary-dark transition-all duration-300 px-6 py-4 text-white font-semibold rounded-none uppercase tracking-wide mb-4"
                   >
                     Få Offert

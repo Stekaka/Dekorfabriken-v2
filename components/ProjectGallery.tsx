@@ -322,7 +322,14 @@ export default function ProjectGallery() {
             <button 
               onClick={() => {
                 const contactSection = document.getElementById('contact')
-                contactSection?.scrollIntoView({ behavior: 'smooth' })
+                if (contactSection) {
+                  const navHeight = 80 // Account for navbar height
+                  const targetPosition = contactSection.offsetTop - navHeight
+                  window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                  })
+                }
               }}
               className="bg-primary hover:bg-primary-dark transition-all duration-300 px-10 py-4 text-white font-semibold rounded-none uppercase tracking-wide group"
             >
