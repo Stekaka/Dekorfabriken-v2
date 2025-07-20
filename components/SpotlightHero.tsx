@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
+
 export default function SpotlightHero() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 })
@@ -66,148 +67,148 @@ export default function SpotlightHero() {
         className="absolute inset-0 transition-opacity duration-500"
         style={{ 
           opacity: isHovering ? 1 : 0,
-          filter: 'blur(0.5px) brightness(1.3) contrast(1.2)' // Bloom effect
+          filter: 'blur(0.3px) brightness(1.2) contrast(1.1)' // Reduced bloom effect
         }}
       >
-        {/* Light rays från spotlighten - EXTREMT STARKA */}
+        {/* Light rays från spotlighten - DÄMPAD */}
         <div
           className="absolute inset-0"
           style={{
             background: `conic-gradient(from 0deg at ${mousePosition.x}% ${mousePosition.y}%, 
               transparent 0deg, 
-              rgba(255, 255, 255, 0.35) 30deg, 
+              rgba(255, 255, 255, 0.18) 30deg, 
               transparent 60deg, 
-              rgba(255, 255, 255, 0.28) 90deg, 
+              rgba(255, 255, 255, 0.12) 90deg, 
               transparent 120deg,
-              rgba(255, 255, 255, 0.35) 150deg,
+              rgba(255, 255, 255, 0.18) 150deg,
               transparent 180deg,
-              rgba(255, 255, 255, 0.28) 210deg,
+              rgba(255, 255, 255, 0.12) 210deg,
               transparent 240deg,
-              rgba(255, 255, 255, 0.35) 270deg,
+              rgba(255, 255, 255, 0.18) 270deg,
               transparent 300deg,
-              rgba(255, 255, 255, 0.28) 330deg,
+              rgba(255, 255, 255, 0.12) 330deg,
               transparent 360deg)`
           }}
         />
         
-        {/* Huvudspotlight - som en strålkastare - ULTRA STARK */}
+        {/* Huvudspotlight - som en strålkastare - DÄMPAD */}
         <div
           className="absolute inset-0"
           style={{
             background: `radial-gradient(
               ellipse 900px 1200px at ${mousePosition.x}% ${mousePosition.y}%, 
-              rgba(255, 255, 255, 0.85) 0%,
-              rgba(255, 255, 255, 0.65) 15%,
-              rgba(255, 255, 255, 0.45) 30%,
-              rgba(255, 255, 255, 0.30) 50%,
-              rgba(255, 255, 255, 0.15) 70%,
-              rgba(255, 255, 255, 0.05) 85%,
+              rgba(255, 255, 255, 0.50) 0%,
+              rgba(255, 255, 255, 0.35) 15%,
+              rgba(255, 255, 255, 0.22) 30%,
+              rgba(255, 255, 255, 0.15) 50%,
+              rgba(255, 255, 255, 0.08) 70%,
+              rgba(255, 255, 255, 0.02) 85%,
               transparent 95%
             )`,
           }}
         />
         
-        {/* Intensiv centrum av spotlight - BLÄNDANDE STARK */}
+        {/* Intensiv centrum av spotlight - DÄMPAD */}
         <div
           className="absolute inset-0"
           style={{
             background: `radial-gradient(
               circle 400px at ${mousePosition.x}% ${mousePosition.y}%, 
-              rgba(255, 255, 255, 0.95) 0%,
-              rgba(255, 255, 255, 0.80) 20%,
-              rgba(255, 255, 255, 0.60) 40%,
-              rgba(255, 255, 255, 0.40) 60%,
-              rgba(255, 255, 255, 0.20) 80%,
+              rgba(255, 255, 255, 0.58) 0%,
+              rgba(255, 255, 255, 0.42) 20%,
+              rgba(255, 255, 255, 0.28) 40%,
+              rgba(255, 255, 255, 0.15) 60%,
+              rgba(255, 255, 255, 0.06) 80%,
               transparent 95%
             )`,
           }}
         />
       </div>
 
-      {/* Spotlight glow effect - som en riktig strålkastare - EXTREMT STARK */}
+      {/* Spotlight glow effect - som en riktig strålkastare - DÄMPAD */}
       {isHovering && (
         <>
-          {/* Yttre ljuskägla - MASSIV OCH EXTREMT STARK */}
+          {/* Yttre ljuskägla - DÄMPAD */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
               background: `radial-gradient(
                 ellipse 1600px 1800px at ${mousePosition.x}% ${mousePosition.y}%, 
-                rgba(255, 255, 255, 0.30) 0%,
-                rgba(255, 255, 255, 0.25) 15%,
-                rgba(255, 255, 255, 0.18) 30%,
-                rgba(255, 255, 255, 0.12) 50%,
-                rgba(255, 255, 255, 0.06) 70%,
-                rgba(255, 255, 255, 0.03) 85%,
+                rgba(255, 255, 255, 0.15) 0%,
+                rgba(255, 255, 255, 0.11) 15%,
+                rgba(255, 255, 255, 0.08) 30%,
+                rgba(255, 255, 255, 0.05) 50%,
+                rgba(255, 255, 255, 0.02) 70%,
+                rgba(255, 255, 255, 0.01) 85%,
                 transparent 95%
               )`,
-              filter: 'blur(1px) brightness(1.5)' // Extra bloom
+              filter: 'blur(0.8px) brightness(1.2)' // Reduced bloom
             }}
           />
           
-          {/* Mellersta ljuskägla - EXTREMT STARK */}
+          {/* Mellersta ljuskägla - DÄMPAD */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
               background: `radial-gradient(
                 ellipse 1000px 1200px at ${mousePosition.x}% ${mousePosition.y}%, 
-                rgba(255, 255, 255, 0.50) 0%,
-                rgba(255, 255, 255, 0.40) 15%,
-                rgba(255, 255, 255, 0.30) 30%,
-                rgba(255, 255, 255, 0.20) 50%,
-                rgba(255, 255, 255, 0.10) 70%,
+                rgba(255, 255, 255, 0.28) 0%,
+                rgba(255, 255, 255, 0.20) 15%,
+                rgba(255, 255, 255, 0.14) 30%,
+                rgba(255, 255, 255, 0.09) 50%,
+                rgba(255, 255, 255, 0.04) 70%,
                 transparent 85%
               )`,
-              filter: 'blur(0.5px) brightness(1.3)'
+              filter: 'blur(0.4px) brightness(1.1)'
             }}
           />
           
-          {/* Inre ljuskärna - BLÄNDANDE STARK */}
+          {/* Inre ljuskärna - DÄMPAD */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
               background: `radial-gradient(
                 circle 350px at ${mousePosition.x}% ${mousePosition.y}%, 
-                rgba(255, 255, 255, 0.90) 0%,
-                rgba(255, 255, 255, 0.75) 20%,
-                rgba(255, 255, 255, 0.55) 40%,
-                rgba(255, 255, 255, 0.35) 60%,
-                rgba(255, 255, 255, 0.15) 80%,
+                rgba(255, 255, 255, 0.55) 0%,
+                rgba(255, 255, 255, 0.38) 20%,
+                rgba(255, 255, 255, 0.26) 40%,
+                rgba(255, 255, 255, 0.15) 60%,
+                rgba(255, 255, 255, 0.06) 80%,
                 transparent 90%
               )`,
-              filter: 'brightness(1.4)'
+              filter: 'brightness(1.15)'
             }}
           />
           
-          {/* Dramatiska ljusstrålar - EXTREMT STARKA */}
+          {/* Dramatiska ljusstrålar - DÄMPAD */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
               background: `conic-gradient(from 0deg at ${mousePosition.x}% ${mousePosition.y}%, 
                 transparent 0deg, 
-                rgba(255, 255, 255, 0.45) 15deg,
+                rgba(255, 255, 255, 0.22) 15deg,
                 transparent 30deg,
-                rgba(255, 255, 255, 0.35) 45deg,
+                rgba(255, 255, 255, 0.16) 45deg,
                 transparent 60deg,
-                rgba(255, 255, 255, 0.42) 75deg,
+                rgba(255, 255, 255, 0.20) 75deg,
                 transparent 90deg,
-                rgba(255, 255, 255, 0.32) 105deg,
+                rgba(255, 255, 255, 0.15) 105deg,
                 transparent 120deg,
-                rgba(255, 255, 255, 0.45) 135deg,
+                rgba(255, 255, 255, 0.22) 135deg,
                 transparent 150deg,
-                rgba(255, 255, 255, 0.35) 165deg,
+                rgba(255, 255, 255, 0.16) 165deg,
                 transparent 180deg,
-                rgba(255, 255, 255, 0.42) 195deg,
+                rgba(255, 255, 255, 0.20) 195deg,
                 transparent 210deg,
-                rgba(255, 255, 255, 0.32) 225deg,
+                rgba(255, 255, 255, 0.15) 225deg,
                 transparent 240deg,
-                rgba(255, 255, 255, 0.45) 255deg,
+                rgba(255, 255, 255, 0.22) 255deg,
                 transparent 270deg,
-                rgba(255, 255, 255, 0.35) 285deg,
+                rgba(255, 255, 255, 0.16) 285deg,
                 transparent 300deg,
-                rgba(255, 255, 255, 0.42) 315deg,
+                rgba(255, 255, 255, 0.20) 315deg,
                 transparent 330deg,
-                rgba(255, 255, 255, 0.32) 345deg,
+                rgba(255, 255, 255, 0.15) 345deg,
                 transparent 360deg
               )`,
               maskImage: `radial-gradient(
@@ -220,59 +221,46 @@ export default function SpotlightHero() {
                 black 0%, 
                 transparent 65%
               )`,
-              filter: 'brightness(1.2)'
+              filter: 'brightness(1.05)'
             }}
           />
           
-          {/* Extra stark central glow - MAXIMALT */}
+          {/* Extra stark central glow - DÄMPAD */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
               background: `radial-gradient(
                 circle 150px at ${mousePosition.x}% ${mousePosition.y}%, 
-                rgba(255, 255, 255, 0.98) 0%,
-                rgba(255, 255, 255, 0.85) 15%,
-                rgba(255, 255, 255, 0.65) 30%,
-                rgba(255, 255, 255, 0.45) 50%,
-                rgba(255, 255, 255, 0.25) 70%,
+                rgba(255, 255, 255, 0.65) 0%,
+                rgba(255, 255, 255, 0.48) 15%,
+                rgba(255, 255, 255, 0.32) 30%,
+                rgba(255, 255, 255, 0.18) 50%,
+                rgba(255, 255, 255, 0.09) 70%,
                 transparent 85%
               )`,
-              filter: 'blur(0.3px) brightness(1.6)'
+              filter: 'blur(0.2px) brightness(1.3)'
             }}
           />
           
-          {/* Ultra intensiv kärna - BLÄNDANDE */}
+          {/* Ultra intensiv kärna - DÄMPAD */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
               background: `radial-gradient(
                 circle 80px at ${mousePosition.x}% ${mousePosition.y}%, 
-                rgba(255, 255, 255, 1.0) 0%,
-                rgba(255, 255, 255, 0.90) 25%,
-                rgba(255, 255, 255, 0.70) 50%,
-                rgba(255, 255, 255, 0.45) 75%,
+                rgba(255, 255, 255, 0.70) 0%,
+                rgba(255, 255, 255, 0.52) 25%,
+                rgba(255, 255, 255, 0.32) 50%,
+                rgba(255, 255, 255, 0.15) 75%,
                 transparent 90%
               )`,
-              filter: 'blur(0.2px) brightness(1.8)'
-            }}
-          />
-          
-          {/* NYTT: Super intensiv punkt i centrum */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background: `radial-gradient(
-                circle 40px at ${mousePosition.x}% ${mousePosition.y}%, 
-                rgba(255, 255, 255, 1.0) 0%,
-                rgba(255, 255, 255, 0.95) 30%,
-                rgba(255, 255, 255, 0.80) 60%,
-                transparent 85%
-              )`,
-              filter: 'brightness(2.0)'
+              filter: 'blur(0.1px) brightness(1.35)'
             }}
           />
         </>
       )}
+
+
 
       {/* Content */}
       <div className="relative z-10 h-full flex items-center justify-center text-center section-padding">
@@ -291,7 +279,7 @@ export default function SpotlightHero() {
             >
               Precision.<br />
               Kvalité.<br />
-              <span className="text-primary">Ectremt hållbart.</span>
+              <span className="text-primary">Extremt hållbart.</span>
             </motion.h1>
             
             <motion.p
